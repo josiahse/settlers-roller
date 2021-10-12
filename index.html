@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<head>
+	<title>Settlers Dice Roller</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Montserrat&display=swap"
+		rel="stylesheet"
+	/>
+	<link href="styles.css" rel="stylesheet" />
+	<script
+		src="https://kit.fontawesome.com/4cd9c4ed0a.js"
+		crossorigin="anonymous"
+	></script>
+</head>
+
+<body>
+	<header>
+		<h1>Settlers Dice Roller</h1>
+		<nav>
+			<ul>
+				<li>
+					<p>Cities and Knights</p>
+					<i class="far fa-question-circle" title="When toggled off this disables the features relevant to the Cities and Knights expansion pack."></i>
+					<label class="switch">
+						<input name="cities" type="checkbox" checked />
+						<span class="slider round"></span>
+					</label>
+				</li>
+				<li>
+					<p>Robber House Rule</p>
+					<i class="far fa-question-circle" title="When toggled on, this enables a house rule that 7's cannot be rolled until the barbarians come for the first time."></i>
+					<label class="switch">
+						<input name="robber" type="checkbox" checked />
+						<span class="slider round"></span>
+					</label>
+				</li>
+			</ul>
+			<p class="view-button view-data">View Game Data</p>
+			<p class="view-button view-dice hide">Back to Dice</p>
+		</nav>
+	</header>
+	<main>
+		<div class="dice-box">
+			<div class="dice">
+				<p class="red die">
+					<i class="fas fa-square"></i>
+				</p>
+				<p class="yellow die">
+					<i class="fas fa-square"></i>
+				</p>
+				<p class="color die">
+					<i class="fas fa-square"></i>
+				</p>
+			</div>
+			<div class="roll_button">
+				<p class="roll">Roll Dice!</p>
+			</div>
+
+			<div class="barbarian-movement">
+				<p class="barb tile1"></p>
+				<p class="barb tile2"></p>
+				<p class="barb tile3"></p>
+				<p class="barb tile4"></p>
+				<p class="barb tile5"></p>
+				<p class="barb tile6"></p>
+				<p class="barb tile7"></p>
+                <p class="barb tile8"></p>
+			</div>
+		</div>
+
+		<p class="hide numRolls"></p>
+
+		<div class="data-box hide">
+			<table class="totals">
+				<thead>
+					<tr>
+						<th colspan="4">Totals</th>
+					</tr>
+				</thead>
+				<tbody class="totals">
+					<tr>
+						<td>Roll</td>
+						<td># Rolled</td>
+						<td>Expected</td>
+						<td>Difference</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table class="colors">
+				<thead>
+					<tr>
+						<th colspan="4">Colors</th>
+					</tr>
+				</thead>
+				<tbody class="colors">
+					<tr>
+						<td>Color</td>
+						<td># Rolled</td>
+						<td>Expected</td>
+						<td>Difference</td>
+					</tr>
+				</tbody>
+			</table>
+            <p class="view-button reset-button hide">Reset Game Data</p>
+		</div>
+	</main>
+
+	<script
+		src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"
+	></script>
+	<script src="script.js"></script>
+</body>
