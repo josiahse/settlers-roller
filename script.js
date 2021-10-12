@@ -164,10 +164,10 @@ $('.view-button').on('click', function (event) {
 		const roundedOdds = Math.round(colorProbability[color] * numOfRolls);
 		$('tbody.colors').append(
 			`<tr class='added-rows'>
-                <td>${color}</td>
-			    <td>${colorHistory[color]}</td>
-                <td>${roundedOdds}</td>
-                <td>${colorHistory[color] - roundedOdds}</td>
+                <td'>${color}</td>
+			    <td'>${colorHistory[color]}</td>
+                <td'>${roundedOdds}</td>
+                <td'>${colorHistory[color] - roundedOdds}</td>
             </tr>`
 		);
 	}

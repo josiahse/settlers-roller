@@ -148,6 +148,10 @@ td {
     text-align: center;
 }
 
+table{
+    border-collapse: collapse;
+}
+
 .numRolls {
     text-align: center;
     font-size: 18px;
