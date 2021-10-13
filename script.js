@@ -64,56 +64,55 @@ const rollD6 = () => {
 	return Math.ceil(Math.random() * 6);
 };
 
+const rollNumDie = (color) => {
+	const roll = rollD6();
+	$(`#${color}`)
+		.removeClass()
+		.addClass(`${diceClasses[roll - 1]}`);
+	return roll;
+};
+
+const rollColorDie = () => {
+	const color = colorDie[rollD6() - 1];
+	$('#color').css('color', `${color}`);
+}
+
 const rollDice = (citiesBool, robberBool) => {
-	// console.log(robber)
-    $('.barbarians').remove();
+	$('.barbarians').remove();
 
-	const diceRoll = {
-		red: 0,
-		yellow: 0,
-		total: 0,
-		color: null,
-	};
-
-	diceRoll.red = rollD6();
-	$('.red')
-		.find('>:first-child')
-		.removeClass()
-		.addClass(`${diceClasses[diceRoll.red - 1]}`);
-	diceRoll.yellow = rollD6();
-	$('.yellow')
-		.find('>:first-child')
-		.removeClass()
-		.addClass(`${diceClasses[diceRoll.yellow - 1]}`);
-	diceRoll.total = diceRoll.red + diceRoll.yellow;
-	
-    if (citiesBool) {
-		diceRoll.color = colorDie[rollD6() - 1];
-		$('.color').find('>:first-child').css('color', `${diceRoll.color}`);
-		if (!robberBool && diceRoll.total === 7) {
-			while (diceRoll.total === 7) {
-				diceRoll.red = rollD6();
-				diceRoll.yellow = rollD6();
-				diceRoll.total = diceRoll.red + diceRoll.yellow;
+	let red = rollNumDie('red');
+	let yellow = rollNumDie('yellow');
+	let total = red + yellow;
+	let color = '';
+	//roll color die, check robber house rule
+	if (citiesBool) {
+		color = rollColorDie();
+		if (!robberBool && total === 7) {
+			while (total === 7) {
+				red = rollNumDie('red');
+				yellow = rollNumDie('yellow');
+				total = red + yellow;
 			}
 		}
+		//update barbarian tracker
+		if (color === 'black') {
+			$(`.tile${barbPos}`).css('background-color', 'rgb(221, 221, 221)');
+			barbPos++;
+			if (barbPos === 8) {
+				robber = true;
+				barbPos = 1;
+				$('.dice-box').append(
+					'<p class="barbarians">The barbarians strike!</p>'
+				);
+			}
+			$(`.tile${barbPos}`).css('background-color', 'black');
+		}
+		colorHistory[color]++;
 	}
 
-    if (diceRoll.color === 'black') {
-        $(`.tile${barbPos}`).css('background-color', 'rgb(221, 221, 221)');
-        barbPos++;
-        if (barbPos === 8){
-            robber = true;
-            barbPos = 1;
-            $('.dice-box').append('<p class="barbarians">The barbarians strike!</p>');
-        }
-        $(`.tile${barbPos}`).css('background-color', 'black');
-    }
-
-	totalsHistory[diceRoll.total]++;
-	colorHistory[diceRoll.color]++;
+	totalsHistory[total]++;
 	
-    numOfRolls++;
+	numOfRolls++;
 };
 
 $('.roll').on('click', function (event) {
@@ -147,8 +146,8 @@ $('.view-button').on('click', function (event) {
 	$('.dice-box, .data-box, .view-button, .numRolls').toggleClass('hide');
 	$('.added-rows').remove();
 	$('.numRolls').text(`Rolls: ${numOfRolls}`);
-    
-    for (num in totalsHistory) {
+
+	for (num in totalsHistory) {
 		const roundedOdds = Math.round(totalsProbability[num] * numOfRolls);
 		$('tbody.totals').append(
 			`<tr class='added-rows'>
@@ -164,30 +163,25 @@ $('.view-button').on('click', function (event) {
 		const roundedOdds = Math.round(colorProbability[color] * numOfRolls);
 		$('tbody.colors').append(
 			`<tr class='added-rows'>
-                <td'>${color}</td>
-			    <td'>${colorHistory[color]}</td>
-                <td'>${roundedOdds}</td>
-                <td'>${colorHistory[color] - roundedOdds}</td>
+                <td>${color}</td>
+			    <td>${colorHistory[color]}</td>
+                <td>${roundedOdds}</td>
+                <td>${colorHistory[color] - roundedOdds}</td>
             </tr>`
 		);
 	}
 });
 
-$('.reset-button').on('click', function(event) {
-    event.preventDefault;
-    $(`.tile${barbPos}`).css('background-color', 'rgb(221, 221, 221)');
-    barbPos = 1;
-    $(`.tile1`).css('background-color', 'black');
-    numOfRolls = 0;
-    for (num in totalsHistory) {
-        totalsHistory[num] = 0;
-    }
-    for (color in colorHistory) {
+$('.reset-button').on('click', function (event) {
+	event.preventDefault;
+	$(`.tile${barbPos}`).css('background-color', 'rgb(221, 221, 221)');
+	barbPos = 1;
+	$(`.tile1`).css('background-color', 'black');
+	numOfRolls = 0;
+	for (num in totalsHistory) {
+		totalsHistory[num] = 0;
+	}
+	for (color in colorHistory) {
 		colorHistory[color] = 0;
 	}
 });
-
-// for (let i = 0; i < 100; i++){
-//     console.log(robber)
-//     rollDice(cities, robber);
-// }
