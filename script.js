@@ -124,10 +124,12 @@ $('.roll').on('click', function (event) {
 $('input[name="cities"]').on('click', function (event) {
 	event.preventDefault;
 	if ($('input[name="cities"]').is(':checked')) {
-		$('.color, .barbarian-movement').removeClass('hide');
+		$('.color, .barbarian-movement, table.colors').removeClass('hide');
+		$('table.totals').css('grid-column', '1 / 2');
 		cities = true;
 	} else {
-		$('.color, .barbarian-movement').addClass('hide');
+		$('.color, .barbarian-movement, table.colors').addClass('hide');
+		$('table.totals').css('grid-column', '1 / 3');
 		robber = true;
 		cities = false;
 	}
