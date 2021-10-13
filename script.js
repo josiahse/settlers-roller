@@ -65,6 +65,7 @@ const rollD6 = () => {
 };
 
 const rollNumDie = (color) => {
+	//roll the number and replace the die on the page with the appropriately numbered one.
 	const roll = rollD6();
 	$(`#${color}`)
 		.removeClass()
@@ -73,6 +74,7 @@ const rollNumDie = (color) => {
 };
 
 const rollColorDie = () => {
+	//roll the color and replace the color die on the page with the appropriately colored one.
 	const color = colorDie[rollD6() - 1];
 	$('#color').css('color', `${color}`);
 	return color;
@@ -100,7 +102,7 @@ const rollDice = (citiesBool, robberBool) => {
 			$(`.tile${barbPos}`).css('background-color', 'rgb(221, 221, 221)');
 			barbPos++;
 			if (barbPos === 8) {
-				robber = true;
+				robber = true; //if robber was false it will be set to true after the first time the barbarians come
 				barbPos = 1;
 				$('.dice-box').append(
 					'<p class="barbarians">The barbarians strike!</p>'
@@ -117,18 +119,20 @@ const rollDice = (citiesBool, robberBool) => {
 };
 
 $('.roll').on('click', function (event) {
+	//the main roll function from the "Roll Dice!" button
 	event.preventDefault;
 	rollDice(cities, robber);
 });
 
 $('input[name="cities"]').on('click', function (event) {
+	//toggle for cities and knights, toggles the relevant sections to be hidden or not
 	event.preventDefault;
 	if ($('input[name="cities"]').is(':checked')) {
-		$('.color, .barbarian-movement, table.colors').removeClass('hide');
+		$('.color, .barbarian-movement, table.colors, .robber').removeClass('hide');
 		$('table.totals').css('grid-column', '1 / 2');
 		cities = true;
 	} else {
-		$('.color, .barbarian-movement, table.colors').addClass('hide');
+		$('.color, .barbarian-movement, table.colors, .robber').addClass('hide');
 		$('table.totals').css('grid-column', '1 / 3');
 		robber = true;
 		cities = false;
@@ -136,6 +140,7 @@ $('input[name="cities"]').on('click', function (event) {
 });
 
 $('input[name="robber"]').on('click', function (event) {
+	//toggle for robber house rule
 	event.preventDefault;
 	if ($('input[name="robber"]').is(':checked')) {
 		robber = false;
@@ -145,6 +150,7 @@ $('input[name="robber"]').on('click', function (event) {
 });
 
 $('.view-button').on('click', function (event) {
+	//switches page between the dice showing and the data showing
 	event.preventDefault;
 	$('.dice-box, .data-box, .view-button, .numRolls').toggleClass('hide');
 	$('.added-rows').remove();
@@ -176,6 +182,7 @@ $('.view-button').on('click', function (event) {
 });
 
 $('.reset-button').on('click', function (event) {
+	//resets all data from the game 
 	event.preventDefault;
 	$(`.tile${barbPos}`).css('background-color', 'rgb(221, 221, 221)');
 	barbPos = 1;
