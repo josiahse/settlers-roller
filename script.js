@@ -75,7 +75,8 @@ const rollNumDie = (color) => {
 const rollColorDie = () => {
 	const color = colorDie[rollD6() - 1];
 	$('#color').css('color', `${color}`);
-}
+	return color;
+};
 
 const rollDice = (citiesBool, robberBool) => {
 	$('.barbarians').remove();
@@ -111,7 +112,7 @@ const rollDice = (citiesBool, robberBool) => {
 	}
 
 	totalsHistory[total]++;
-	
+
 	numOfRolls++;
 };
 
