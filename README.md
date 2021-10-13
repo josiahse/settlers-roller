@@ -7,5 +7,5 @@
 + Tracks the data from the game for later analysis
 
 ## To-Do's:
-+ Add some way to export data to a .csv for graphing
-+ Add visualization of data to site
++ add a JavaScript info box to the ? icons instead of the default popup
++ Add some way to export data to a .csv for graphing and/or add visualization of data to site
