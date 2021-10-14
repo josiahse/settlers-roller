@@ -257,5 +257,17 @@ input:checked + .slider:before {
         width: 100%;
     }
 
+    .data-box {
+        margin: 10px;
+    }
 
+    table.totals {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+    }
+
+    table.colors {
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
+    }
 }
