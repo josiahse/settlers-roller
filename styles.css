@@ -1,33 +1,68 @@
 body {
-    width: 1080px;
-    background-color:rgb(94, 94, 94);
+    width: 80%;
+    /* background-color:rgb(94, 94, 94); */
+    background-image: url("hex-background.jpg");
     color: white;
     margin: 0 auto;
     font-family: Montserrat, sans-serf;
 }
 
-p.die {
-    font-size: 180px;
-}
+
 
 h1 {
     text-align: center;
 }
 
 nav {
-    width: 600px;
+    width: 60%;
     margin: 0 auto;
 }
 
 .dice {
+    margin: 0 auto;
     display: flex;
     justify-content: space-around;
+    width: 80%;
     align-items: center;
-    margin-left: 200px;
-    margin-right: 200px;
-    height: 260px;
-    background-color: white;
-    border-radius: 30px;
+    height: 200px;
+}
+
+span.fa-stack{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.diceBack{
+    margin-top: 2px;
+    margin-left: 20px;
+    font-size: 150px;
+}
+
+#yellow, #red, #color {
+    font-size: 180px;
+}
+
+.diceBack {
+    color: white;
+    /* font-size: 150px; */
+}
+
+
+
+.red {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.yellow {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.color {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
 }
 
 ul {
@@ -77,14 +112,14 @@ li {
 .barbarian-movement {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    width: 800px;
+    width: 60%;
     margin: 0 auto;
 }
 
 .barb {
     border:1px solid black;
-    height: 100px;
-    width: 100px;
+    height: 100%;
+    width: 100%;
     align-self: center;
     justify-self: center;
     background-color:rgb(221, 221, 221);
@@ -109,11 +144,11 @@ li {
     cursor: pointer;
 }
 
-.red {
+#red {
     color: red;
 }
 
-.yellow {
+#yellow {
     color: #efdd15;
 }
 
@@ -155,6 +190,13 @@ table{
 .numRolls {
     text-align: center;
     font-size: 18px;
+}
+
+.imgCredit {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    font-size: 12px;
 }
 
 /* toggle switches */
@@ -239,18 +281,24 @@ input:checked + .slider:before {
         justify-content: center;
     }
 
-    .dice {
-        margin: 10px;
-        height: 120px;
-    }
-
-    p.die {
+    #red, #yellow, #color {
         font-size: 100px;
     }
 
+    .dice {
+        width: 95%;
+        margin-top: 30px;
+        height: 120px;
+    }
+
+    .diceBack {
+        font-size: 70px;
+        margin-left: 10px;
+    }
+
     .barbarian-movement {
-        width: auto;
-        margin: 10px;
+        margin-top: 10px;
+        width: 80%;
     }
 
     .barb {

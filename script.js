@@ -1,10 +1,10 @@
 const diceClasses = [
-	'fas fa-dice-one',
-	'fas fa-dice-two',
-	'fas fa-dice-three',
-	'fas fa-dice-four',
-	'fas fa-dice-five',
-	'fas fa-dice-six',
+	'fas fa-dice-one fa-stack-1x',
+	'fas fa-dice-two fa-stack-1x',
+	'fas fa-dice-three fa-stack-1x',
+	'fas fa-dice-four fa-stack-1x',
+	'fas fa-dice-five fa-stack-1x',
+	'fas fa-dice-six fa-stack-1x',
 ];
 
 const totalsProbability = {

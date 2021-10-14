@@ -51,15 +51,21 @@
 	<main>
 		<div class="dice-box">
 			<div class="dice">
-				<p class="red die">
-					<i class="fas fa-square" id="red"></i>
-				</p>
-				<p class="yellow die">
-					<i class="fas fa-square" id="yellow"></i>
-				</p>
-				<p class="color die">
-					<i class="fas fa-square" id="color"></i>
-				</p>
+				<div class="red die">
+					<span class="fa-stack">
+						<i class="fas fa-square fa-stack-1x diceBack"></i>
+						<i class="fas fa-square fa-stack-1x" id="red"></i>
+					</span>
+				</div>
+				<div class="yellow die">
+					<span class="fa-stack">
+						<i class="fas fa-square fa-stack-1x diceBack"></i>
+						<i class="fas fa-square fa-stack-1x" id="yellow"></i>
+					</span>
+				</div>
+				<div class="color die">
+						<i class="fas fa-square rolledDie" id="color"></i>
+				</div>
 			</div>
 			<div class="roll_button">
 				<p class="roll">Roll Dice!</p>
@@ -114,6 +120,8 @@
 			<p class="view-button reset-button hide">Reset Game Data</p>
 		</div>
 	</main>
+
+	<!-- Background Image by <a href="https://pixabay.com/users/joshgmit-10865089/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5035258">Joshgmit</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5035258">Pixabay</a> -->
 
 	<script
 		src="https://code.jquery.com/jquery-3.6.0.min.js"
